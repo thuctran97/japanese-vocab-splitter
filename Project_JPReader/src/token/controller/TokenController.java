@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.atilika.kuromoji.Token;
 import org.atilika.kuromoji.Tokenizer;
+import org.json.simple.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,25 +27,31 @@ public class TokenController {
 		model.addAttribute("message",myText);
 		Tokenizer tokenizer;
 		tokenizer = Tokenizer.builder().build();
-		List<Token> tokens = tokenizer.tokenize(myText);	
+		List<Token> tokens = tokenizer.tokenize(myText);
 		int id=0;
         for (Token token : tokens) {
         	AdditionalToken at = new AdditionalToken();
         	at.setId(id++);
         	at.setSurfaceForm(token.getSurfaceForm());
         	at.setReading(token.getReading());
+        	at.setPartOfSpeech(token.getPartOfSpeech());
+        	at.setBaseForm(token.getBaseForm());
         	tokensWithId.add(at);
-            System.out.println(token.getSurfaceForm() + "\t" + token.getAllFeatures());
         }
-
 		model.addAttribute("text",tokensWithId);
 		return "index";
 	}
-//	@ResponseBody
-//	@RequestMapping(value="select")
-//	public java.lang.String choice(ModelMap model, @RequestParam("id") int id){
-//		AdditionalToken t= tokensWithId.get(id);
-//		String json = String.format("[%s, %s]", t.getReading(), t.getSurfaceForm());
-//		return json;
-//	}
+	@SuppressWarnings("unchecked")
+	@ResponseBody
+	@RequestMapping(value="select")
+	public JSONObject choice(@RequestParam("id") int id){
+		AdditionalToken t= tokensWithId.get(id);
+	    JSONObject json = new JSONObject();
+	    json.put("reading", t.getReading());
+	    json.put("surfaceForm", t.getSurfaceForm());
+	    json.put("partOfSpeech", t.getPartOfSpeech());
+	    json.put("baseForm", t.getBaseForm());
+		//System.out.println(json);
+		return json;
+	}
 }

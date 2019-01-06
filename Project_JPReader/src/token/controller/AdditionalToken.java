@@ -2,8 +2,29 @@ package token.controller;
 
 public class AdditionalToken {
 	private int id;
+	private int level;
 	private java.lang.String surfaceForm;
 	private java.lang.String reading;
+	private java.lang.String baseForm;
+	private java.lang.String partOfSpeech;
+	public int getLevel() {
+		return level;
+	}
+	public void setLevel(int level) {
+		this.level = level;
+	}
+	public java.lang.String getBaseForm() {
+		return baseForm;
+	}
+	public void setBaseForm(java.lang.String baseForm) {
+		this.baseForm = baseForm;
+	}
+	public java.lang.String getPartOfSpeech() {
+		return partOfSpeech;
+	}
+	public void setPartOfSpeech(java.lang.String partOfSpeech) {
+		this.partOfSpeech = partOfSpeech;
+	}
 	public int getId() {
 		return id;
 	}

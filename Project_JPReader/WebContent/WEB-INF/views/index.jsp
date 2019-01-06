@@ -1,4 +1,4 @@
-<%@ page pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -13,6 +13,34 @@
 <script src="js/bootstrap.min.js"></script>
 <link href="css/style.css" rel="stylesheet" />
 </head>
+<script type="text/javascript">
+	function insertFlashcard(surfaceForm,reading, partOfSpeech,baseForm) {
+		var control = '<div class="col-md-3 nn-box">'+'<div class="inner">'
+					+ surfaceForm + '<br>' 
+					+ 'Cách đọc: '+ reading + '<br>' 
+					+ 'Từ loại: '+ partOfSpeech + '<br>' 
+					+  'Nguyên mẫu: ' + baseForm + '<br>' 
+					+ '</div>' + '</div>';
+		$("ul").append(control);
+	}
+	function select(id) {
+		  $.ajax({
+				url:"select.php",
+				data:{id: id}, 
+				success: function(response){
+					var r = response.reading;
+					var s = response.surfaceForm;
+					var p = response.partOfSpeech;
+					var b = response.baseForm;
+					insertFlashcard(s,r,p,b);
+				},
+				error: function() {
+				     alert("loi gi do");
+				},
+				dataType:"json"
+			});
+	}
+</script>
 <body>
 	<h1 id="title">Ứng dụng hỗ trợ đọc báo tiếng nhật</h1>
 	<form action="result.php" method="post">
@@ -32,7 +60,7 @@
 <%-- 						<span class="ttiptext">${p.getPartOfSpeech()}</span> --%>
 						<span class="ttiptext">${p.getReading()}
 <%-- 							<button class="btn btn-warning"  selected-token="${p.getId()}">+</button> --%>
-							<button class="btn btn-warning">+</button>
+							<button class="btn btn-warning" onclick="select(${p.getId()})">+</button>
 						</span>
 					</span>
 					<c:if test="${p.equals('。')}">
@@ -43,8 +71,8 @@
 			<div class="col-sm-2"></div>
 			
 		</div>
-		<input type="submit" value="Xem Flashcard đã tạo" class="btn btn-default">
 		<ul>
+		
 		</ul>
 	</div>
 

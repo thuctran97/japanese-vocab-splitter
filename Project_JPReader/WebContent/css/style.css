@@ -1,7 +1,8 @@
 #title{
 	text-align: center;
-	font-family: comic sans ms;
+	font-family: geneva;
 	font-weight: 1000;
+	color: blue;
 }
 #content{
 	display: block;
@@ -17,7 +18,7 @@
 }
 
 body {
-	background: #1ddced;
+	background: #DCD8D8;
 }
 .btn {
 	margin:auto;
@@ -35,7 +36,6 @@ body {
     text-align: center;
     border-radius: 6px;
     padding: 5px 0;
-
     position: absolute;
     z-index: 1;
 }
@@ -45,3 +45,11 @@ body {
 .ttip:hover .ttiptext {
     visibility: visible;
 }
+.nn-box{
+	padding: 5px 15px 5px 15px;
+	font-size: 15px;
+}
+.nn-box .inner{
+	background-color: yellow;
+}
+	
