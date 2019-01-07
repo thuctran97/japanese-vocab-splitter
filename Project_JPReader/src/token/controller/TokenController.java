@@ -51,7 +51,6 @@ public class TokenController {
 	    json.put("surfaceForm", t.getSurfaceForm());
 	    json.put("partOfSpeech", t.getPartOfSpeech());
 	    json.put("baseForm", t.getBaseForm());
-		//System.out.println(json);
 		return json;
 	}
 }

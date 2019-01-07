@@ -15,11 +15,21 @@
 </head>
 <script type="text/javascript">
 	function insertFlashcard(surfaceForm,reading, partOfSpeech,baseForm) {
+		var url = 'http://www.mazii.net/#!/search?type=w&query='+surfaceForm;
 		var control = '<div class="col-md-3 nn-box">'+'<div class="inner">'
 					+ surfaceForm + '<br>' 
 					+ 'Cách đọc: '+ reading + '<br>' 
 					+ 'Từ loại: '+ partOfSpeech + '<br>' 
 					+  'Nguyên mẫu: ' + baseForm + '<br>' 
+					+ 'Mức độ khó: ' 
+					+ '<select>'
+					+ '<option value="N5">N5</option>'
+					+ '<option value="N4">N4</option>'
+					+ '<option value="N3">N3</option>'
+					+ '<option value="N2">N2</option>'
+					+ '<option value="N1">N1</option>'
+					+ '</select>'
+					+ '<button onclick=window.open("' + url + '")>?</button'
 					+ '</div>' + '</div>';
 		$("ul").append(control);
 	}
