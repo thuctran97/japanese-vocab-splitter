@@ -1,13 +1,14 @@
-#title{
+#title {
 	text-align: center;
 	font-family: geneva;
 	font-weight: 1000;
-	color: blue;
+	color: #6495ED;
 }
-#content{
+
+#content {
 	display: block;
-    margin-left: auto;
-    margin-right: auto;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 * {
@@ -20,36 +21,107 @@
 body {
 	background: #DCD8D8;
 }
+
 .btn {
-	margin:auto;
-  	display:block;
+	margin: auto;
+	display: block;
 }
+
 .ttip {
-    position: relative;
+	position: relative;
 }
 
 .ttiptext {
-    visibility: hidden;
-    width: 120px;
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 0;
-    position: absolute;
-    z-index: 1;
+	visibility: hidden;
+	width: 120px;
+	background-color: black;
+	color: #fff;
+	text-align: center;
+	border-radius: 6px;
+	padding: 5px 0;
+	position: absolute;
+	z-index: 1;
 }
+
 .ttip:hover {
 	background-color: yellow;
 }
+
 .ttip:hover .ttiptext {
-    visibility: visible;
+	visibility: visible;
 }
-.nn-box{
-	padding: 5px 15px 5px 15px;
+
+.nn-box {
+	padding: 15px 20px 15px 20px;
+	background-color: white;
 	font-size: 15px;
+	border: 5px solid blue;
+	margin: 20px 40px 20px 40px;
 }
-.nn-box .inner{
-	background-color: yellow;
+
+.nn-box .inner {
+	margin: while;
+	font-weight: bold;
+
 }
+
+.word {
+	font-size: 30px;
+}
+
+.result {
+	font-size: 20px;
+	background-color: #FAEBD7;
+}
+
+textarea {
+	font-size: 20px;
+}
+
+.nn-header {
+	position: relative;
+	height: 100px;
+}
+
+.nn-header>img {
+	height: 100px;
+	max-width: 100%;
+	max-height: 100%;
+}
+
+/* .account { */
+/* 	align-items: center; */
+/* 	justify-content: center; */
+/* 	position: absolute; */
+/* 	font-family: Impact; */
+/* 	font-size: 50px; */
+/* 	color: black; */
+/* 	letter-spacing: 0.3px; */
+/* 	text-shadow: 0 0 2px black; */
+/* 	padding-bottom: 0px; */
+/* 	margin: 0px; */
+/* 	top: 50%; */
+/* 	left: 85%; */
+/* } */
+
+.dropdown-toggle {
+	font-size: 30px;
+	color: black;
+	align-items: center; 
 	
+}
+
+body {
+	background-image: url("images/wallpaper.jpg");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-attachment: fixed;
+	background-size: 1250px;
+}
+
+
+.text-center {
+	font-size: 27px;
+	font-family: cursive;
+	color: white;
+}

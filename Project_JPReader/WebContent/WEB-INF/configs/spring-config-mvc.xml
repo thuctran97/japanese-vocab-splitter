@@ -26,6 +26,6 @@
 
    	
    	<!-- cấu hình controller -->
-	<context:component-scan base-package="token.controller"/>
+	<context:component-scan base-package="token.controller, token.service"/>
 
 </beans>

@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -17,11 +18,12 @@
 	function insertFlashcard(surfaceForm,reading, partOfSpeech,baseForm) {
 		var url = 'http://www.mazii.net/#!/search?type=w&query='+surfaceForm;
 		var control = '<div class="col-md-3 nn-box">'+'<div class="inner">'
-					+ surfaceForm + '<br>' 
-					+ 'Cách đọc: '+ reading + '<br>' 
-					+ 'Từ loại: '+ partOfSpeech + '<br>' 
-					+  'Nguyên mẫu: ' + baseForm + '<br>' 
-					+ 'Mức độ khó: ' 
+					+ '<center class="word">' +  surfaceForm + '</center>'
+					+  '<br>' 
+					+ ' Cách đọc: '+ reading + '<br>' 
+					+ ' Từ loại: '+ partOfSpeech + '<br>' 
+					+  ' Nguyên mẫu: ' + baseForm + '<br>' 
+					+ ' Mức độ khó: ' 
 					+ '<select>'
 					+ '<option value="N5">N5</option>'
 					+ '<option value="N4">N4</option>'
@@ -34,6 +36,7 @@
 		$("ul").append(control);
 	}
 	function select(id) {
+
 		  $.ajax({
 				url:"select.php",
 				data:{id: id}, 
@@ -45,45 +48,66 @@
 					insertFlashcard(s,r,p,b);
 				},
 				error: function() {
-				     alert("loi gi do");
+				     alert("Error");
 				},
 				dataType:"json"
 			});
 	}
 </script>
 <body>
-	<h1 id="title">Ứng dụng hỗ trợ đọc báo tiếng nhật</h1>
-	<form action="result.php" method="post">
-		<textarea id="content" rows="10" cols="100" name="content"
-			placeholder="Nhập văn bản.."></textarea>
-		<input type="submit" value="Tách từ" class="btn btn-default">
-		
-	</form>
-	<br>
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-sm-2"></div>
-			<div class="col-sm-8">
-				<c:forEach var="p" items="${text}">
-					<span class="ttip">${p.getSurfaceForm()}
-<%-- 						<span class="ttiptext">${p.getBaseForm()}</span> --%>
-<%-- 						<span class="ttiptext">${p.getPartOfSpeech()}</span> --%>
-						<span class="ttiptext">${p.getReading()}
-<%-- 							<button class="btn btn-warning"  selected-token="${p.getId()}">+</button> --%>
-							<button class="btn btn-warning" onclick="select(${p.getId()})">+</button>
-						</span>
-					</span>
-					<c:if test="${p.equals('。')}">
-						<br>
-					</c:if>
-				</c:forEach>
+	<!-- 	<div class="col-sm-6">  </div> -->
+
+	<div class="container">
+		<header class="nn-header row">
+			<img class="pull-left" src="images/logo-rif-lg.png" />
+			<div class="dropdown  pull-right account">
+				<a href="#" class="dropdown-toggle " data-toggle="dropdown">
+				<span class="glyphicon glyphicon-user"> </span> Account <span
+					class="caret"></span>
+				</a>
+				<ul class="dropdown-menu">
+					<c:choose>
+						<c:when test="${empty sessionScope.user}">
+							<li><a href="account/login.php"> Login </a></li>
+							<li><a href="account/forgot.php"> Forgot Password </a></li>
+							<li><a href="account/register.php"> Register </a></li>
+						</c:when>
+						<c:otherwise>
+							<li><a href="account/logoff.php"> Logoff </a></li>
+							<li><a href="account/change.php"> Change Password </a></li>
+							<li><a href="account/edit.php"> Edit Profile </a></li>
+						</c:otherwise>
+					</c:choose>
+				</ul>
 			</div>
-			<div class="col-sm-2"></div>
-			
+		</header>
+		<hr>
+		<form action="result.php" method="post">
+			<textarea id="content" rows="10" cols="100" name="content"
+				placeholder="Nhập văn bản.."></textarea>
+			<input type="submit" value="Phân đoạn từ" class="btn btn-default">
+		</form>
+		<br>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-2"></div>
+				<div class="col-sm-8 result">
+					<c:forEach var="p" items="${text}">
+						<span class="ttip">${p.getSurfaceForm()} <span
+							class="ttiptext">${p.getReading()} <br>
+								<button class="btn btn-warning" onclick="select(${p.getId()})">+</button>
+						</span>
+						</span>
+						<c:if test="${p.equals('。')}">
+							<br>
+						</c:if>
+					</c:forEach>
+				</div>
+				<div class="col-sm-2"></div>
+			</div>
+			<ul>
+			</ul>
 		</div>
-		<ul>
-		
-		</ul>
 	</div>
 
 </body>

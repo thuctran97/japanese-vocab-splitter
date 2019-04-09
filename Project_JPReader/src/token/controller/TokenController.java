@@ -4,6 +4,10 @@ package token.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
+
 import org.atilika.kuromoji.Token;
 import org.atilika.kuromoji.Tokenizer;
 import org.json.simple.JSONObject;
@@ -13,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.support.SessionStatus;
 
 @Controller
 public class TokenController {
@@ -23,8 +28,9 @@ public class TokenController {
 	}
 	@RequestMapping(value="result", method=RequestMethod.POST)
 	public String result(ModelMap model,
-			@RequestParam("content") String myText) {
-		model.addAttribute("message",myText);
+			@RequestParam("content") String myText
+			) {
+		tokensWithId = new ArrayList<AdditionalToken>();
 		Tokenizer tokenizer;
 		tokenizer = Tokenizer.builder().build();
 		List<Token> tokens = tokenizer.tokenize(myText);
