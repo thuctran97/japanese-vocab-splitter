@@ -4,10 +4,6 @@ package token.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
-
 import org.atilika.kuromoji.Token;
 import org.atilika.kuromoji.Tokenizer;
 import org.json.simple.JSONObject;
@@ -17,14 +13,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.support.SessionStatus;
 
 @Controller
 public class TokenController {
+	private 
 	List<AdditionalToken> tokensWithId = new ArrayList<AdditionalToken>();
 	@RequestMapping("home")
-	public String index() {
-		return "index";
+	public String home() {
+		return "home";
 	}
 	@RequestMapping(value="result", method=RequestMethod.POST)
 	public String result(ModelMap model,
@@ -45,7 +41,7 @@ public class TokenController {
         	tokensWithId.add(at);
         }
 		model.addAttribute("text",tokensWithId);
-		return "index";
+		return "home";
 	}
 	@SuppressWarnings("unchecked")
 	@ResponseBody
