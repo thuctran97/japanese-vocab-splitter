@@ -16,36 +16,9 @@
 <script src="js/token.process.js"></script>
 </head>
 <body>
-	<div class="container">
-		<jsp:include page="user/layout/header.jsp" />
-		<hr>
-		<form action="result.php" method="post">
-			<textarea id="content" rows="10" cols="100" name="content"
-				placeholder="Nhập văn bản.."></textarea>
-			<input type="submit" value="Phân đoạn từ" class="btn btn-default">
-		</form>
-		<br>
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-sm-2"></div>
-				<div class="col-sm-8 result">
-					<c:forEach var="p" items="${text}">
-						<span class="ttip">${p.getSurfaceForm()} <span
-							class="ttiptext">${p.getReading()} <br>
-								<button class="btn btn-warning" onclick="select(${p.getId()})">+</button>
-						</span>
-						</span>
-						<c:if test="${p.equals('。')}">
-							<br>
-						</c:if>
-					</c:forEach>
-				</div>
-				<div class="col-sm-2"></div>
-			</div>
-			<ul>
-			</ul>
-		</div>
-	</div>
+	<jsp:include page="user/layout/header.jsp" />
+	<jsp:include page="user/layout/body.jsp" />
+	<%-- 		<jsp:include page="user/layout/footer.jsp" /> --%>
 
 </body>
 </html>
