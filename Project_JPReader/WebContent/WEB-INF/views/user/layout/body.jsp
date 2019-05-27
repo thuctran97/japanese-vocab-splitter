@@ -4,8 +4,8 @@
 
 <div class="container">
 	<div class="row">
-		<div class="col-sm-2"></div>
-		<div class="col-sm-8">
+		<div class="col-sm-1"></div>
+		<div class="col-sm-10">
 			<ul class="nav nav-tabs">
 				<li class="active"><a data-toggle="tab" href="#home">Text</a></li>
 				<li><a data-toggle="tab" href="#menu1">URL</a></li>
@@ -17,41 +17,35 @@
 							placeholder="Enter a text"></textarea>
 					</div>
 					<div id="menu1" class="tab-pane fade">
-						<input type="text" id="url" placeholder="Enter a URL"
-							style="width: 100%; height: 30px">
+						<input type="text" name="content" placeholder="Enter a URL"
+							style="font-size: 15pt; width: 100%; height: 40px">
 					</div>
 				</div>
-				<input type="submit" value="Phân đoạn từ" class="btn btn-default">
+				<input type="submit" value="Tokenize" class="btn btn-default">
 			</form>
+			<hr>
+			<div class="result">
+				<c:forEach var="p" items="${text}">
+					<span class="ttip">${p.getSurfaceForm()} <span
+						class="ttiptext"> Reading: ${p.getReading()} <br> Part
+							of speech: ${p.getPartOfSpeech()} <br> Base form:
+							${p.getBaseForm()} <br> Meaning: ${p.getMeaning()}
+							<button class="btn btn-warning" onclick="select(${p.getId()})">+</button>
+					</span>
+					</span>
+					<c:if test="${p.equals('。')}">
+						<br>
+					</c:if>
+				</c:forEach>
+			</div>
+			<div class="flashcards-result">
+				<ul id="flashcards">
+				</ul>
+			</div>
+			<br>
+			<button class="btn btn-default">Dowload flashcard</button>
 		</div>
-		<div class="col-sm-2"></div>
+		<div class="col-sm-1"></div>
 	</div>
-</div>
-<!-- <hr> -->
-<!-- <form action="result.php" method="post"> -->
-<!-- 	<textarea id="content" rows="10" cols="100" name="content" -->
-<!-- 		placeholder="Nhập văn bản.."></textarea> -->
-<!-- 	<input type="submit" value="Phân đoạn từ" class="btn btn-default"> -->
-<!-- 
-<!-- <br> -->
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-sm-2"></div>
-		<div class="col-sm-8 result">
-			<c:forEach var="p" items="${text}">
-				<span class="ttip">${p.getSurfaceForm()} <span
-					class="ttiptext">${p.getReading()} <br>
-						<button class="btn btn-warning" onclick="select(${p.getId()})">+</button>
-				</span>
-				</span>
-				<c:if test="${p.equals('。')}">
-					<br>
-				</c:if>
-			</c:forEach>
-		</div>
-		<div class="col-sm-2"></div>
-	</div>
-	<ul>
-	</ul>
 </div>
 

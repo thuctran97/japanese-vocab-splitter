@@ -7,6 +7,13 @@ public class AdditionalToken {
 	private java.lang.String reading;
 	private java.lang.String baseForm;
 	private java.lang.String partOfSpeech;
+	private String meaning;
+	public String getMeaning() {
+		return meaning;
+	}
+	public void setMeaning(String meaning) {
+		this.meaning = meaning;
+	}
 	public int getLevel() {
 		return level;
 	}

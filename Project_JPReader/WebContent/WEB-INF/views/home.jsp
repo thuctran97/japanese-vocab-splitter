@@ -18,7 +18,6 @@
 <body>
 	<jsp:include page="user/layout/header.jsp" />
 	<jsp:include page="user/layout/body.jsp" />
-	<%-- 		<jsp:include page="user/layout/footer.jsp" /> --%>
-
+	<jsp:include page="user/layout/footer.jsp" />
 </body>
 </html>

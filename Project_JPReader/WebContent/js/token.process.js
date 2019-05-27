@@ -1,20 +1,15 @@
 function insertFlashcard(surfaceForm, reading, partOfSpeech, baseForm) {
 	var url = 'http://www.mazii.net/#!/search?type=w&query=' + surfaceForm;
-	var control = '<div class="col-md-3 nn-box">' + '<div class="inner">'
+	var control = 
+			'<div class="inner nn-box">'
 			+ '<center class="word">'
 			+ surfaceForm
 			+ '</center>'
+			+ '<span> Cách đọc: </span>'+ reading
+			+ '<span> Từ loại: </span>'+ partOfSpeech
 			+ '<br>'
-			+ ' Cách đọc: '
-			+ reading
-			+ '<br>'
-			+ ' Từ loại: '
-			+ partOfSpeech
-			+ '<br>'
-			+ ' Nguyên mẫu: '
-			+ baseForm
-			+ '<br>'
-			+ ' Mức độ khó: '
+			+ '<span> Nguyên mẫu: </span>'+ baseForm
+			+ '<span> Mức độ khó: </span>'
 			+ '<select>'
 			+ '<option value="N5">N5</option>'
 			+ '<option value="N4">N4</option>'
@@ -25,12 +20,10 @@ function insertFlashcard(surfaceForm, reading, partOfSpeech, baseForm) {
 			+ '<button onclick=window.open("'
 			+ url
 			+ '")>?</button'
-			+ '</div>'
 			+ '</div>';
-	$("ul").append(control);
+	$("#flashcards").append(control);
 }
 function select(id) {
-
 	$.ajax({
 		url : "select.php",
 		data : {

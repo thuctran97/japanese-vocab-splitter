@@ -15,11 +15,16 @@
 	margin: 0;
 	padding: 0;
 	font-family: tahoma, sans-serif;
-	box sizing: border-box;
+	box-sizing: border-box;
 }
 
 body {
-	background: #DCD8D8;
+/*  	background-image: url("images/wallpaper.jpg"); */
+	background-color: #505050;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-attachment: fixed;
+	background-size: 100% 100%;
 }
 
 .btn {
@@ -33,7 +38,7 @@ body {
 
 .ttiptext {
 	visibility: hidden;
-	width: 120px;
+	width: 300px;
 	background-color: black;
 	color: #fff;
 	text-align: center;
@@ -52,26 +57,30 @@ body {
 }
 
 .nn-box {
-	padding: 15px 20px 15px 20px;
+	padding: 5px 10px 5px 10px;
 	background-color: white;
 	font-size: 15px;
 	border: 5px solid blue;
-	margin: 20px 40px 20px 40px;
+	margin: 10px 20px 10px 20px;
 }
 
 .nn-box .inner {
 	margin: while;
 	font-weight: bold;
-
 }
 
 .word {
-	font-size: 30px;
+	font-size: 20px;
+	font-weight: bold;
 }
 
 .result {
 	font-size: 20px;
 	background-color: #FAEBD7;
+}
+
+.nn-box>span {
+	font-weight: bold;
 }
 
 textarea {
@@ -103,25 +112,23 @@ textarea {
 /* 	top: 50%; */
 /* 	left: 85%; */
 /* } */
-
 .dropdown-toggle {
 	font-size: 30px;
 	color: black;
-	align-items: center; 
-	
+	align-items: center;
 }
-
-body {
-	background-image: url("images/wallpaper.jpg");
-	background-repeat: no-repeat;
-	background-position: center;
-	background-attachment: fixed;
-	background-size: 1250px;
-}
-
 
 .text-center {
 	font-size: 27px;
 	font-family: cursive;
 	color: white;
+}
+
+/* .paragraph-title { */
+/* 	justify-content: center; */
+/* 	vertical-align: middle; */
+/* } */
+.flashcards-result {
+	overflow-y: scroll;
+	height: 500px;
 }
