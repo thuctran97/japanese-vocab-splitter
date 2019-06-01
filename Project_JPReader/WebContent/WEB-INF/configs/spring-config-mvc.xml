@@ -21,7 +21,7 @@
 	<!-- cấu hình view -->
 
 	<bean id="viewResolver" 
-		p:prefix="/WEB-INF/views/" p:suffix=".jsp"
+		p:prefix="/WEB-INF/views/layout_dispatcher.jsp?view=" p:suffix=".jsp"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver"/>
 
    	

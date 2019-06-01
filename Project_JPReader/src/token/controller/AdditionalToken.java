@@ -3,34 +3,17 @@ package token.controller;
 public class AdditionalToken {
 	private int id;
 	private int level;
-	private java.lang.String surfaceForm;
-	private java.lang.String reading;
-	private java.lang.String baseForm;
-	private java.lang.String partOfSpeech;
+	private String surfaceForm;
+	private String reading;
+	private String baseForm;
+	private String partOfSpeech;
 	private String meaning;
-	public String getMeaning() {
-		return meaning;
+	private boolean validWord;
+	public boolean isValidWord() {
+		return validWord;
 	}
-	public void setMeaning(String meaning) {
-		this.meaning = meaning;
-	}
-	public int getLevel() {
-		return level;
-	}
-	public void setLevel(int level) {
-		this.level = level;
-	}
-	public java.lang.String getBaseForm() {
-		return baseForm;
-	}
-	public void setBaseForm(java.lang.String baseForm) {
-		this.baseForm = baseForm;
-	}
-	public java.lang.String getPartOfSpeech() {
-		return partOfSpeech;
-	}
-	public void setPartOfSpeech(java.lang.String partOfSpeech) {
-		this.partOfSpeech = partOfSpeech;
+	public void setValidWord(boolean validWord) {
+		this.validWord = validWord;
 	}
 	public int getId() {
 		return id;
@@ -38,16 +21,41 @@ public class AdditionalToken {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public java.lang.String getSurfaceForm() {
+	public int getLevel() {
+		return level;
+	}
+	public void setLevel(int level) {
+		this.level = level;
+	}
+	public String getSurfaceForm() {
 		return surfaceForm;
 	}
-	public void setSurfaceForm(java.lang.String surfaceForm) {
+	public void setSurfaceForm(String surfaceForm) {
 		this.surfaceForm = surfaceForm;
 	}
-	public java.lang.String getReading() {
+	public String getReading() {
 		return reading;
 	}
-	public void setReading(java.lang.String reading) {
+	public void setReading(String reading) {
 		this.reading = reading;
 	}
+	public String getBaseForm() {
+		return baseForm;
+	}
+	public void setBaseForm(String baseForm) {
+		this.baseForm = baseForm;
+	}
+	public String getPartOfSpeech() {
+		return partOfSpeech;
+	}
+	public void setPartOfSpeech(String partOfSpeech) {
+		this.partOfSpeech = partOfSpeech;
+	}
+	public String getMeaning() {
+		return meaning;
+	}
+	public void setMeaning(String meaning) {
+		this.meaning = meaning;
+	}
+	
 }

@@ -15,8 +15,16 @@ CREATE TABLE IF NOT EXISTS JVDICT (
    Kanji 	nvarchar (100),
    Spell 	nvarchar (100) not null,
    Meaning 	nvarchar (1000) not null,
+   Level 	INT UNSIGNED,
    PRIMARY KEY (Id)
 );
+INSERT INTO JVDICT (Id, HikaWord, Kanji, Spell , Meaning, Level) VALUES (1,"あばく","暴く","abaku"," vạch trần; phơi bày; bộc lộ; làm lộ",0);
 
-INSERT INTO JVDICT (Id, HikaWord, Kanji, Spell , Meaning) VALUES (1,"あばく","暴く","abaku"," vạch trần; phơi bày; bộc lộ; làm lộ");
-
+CREATE TABLE IF NOT EXISTS TEST (
+   Id 		INT UNSIGNED not null,
+   Kanji 	nvarchar (100),
+   Hira 	nvarchar (100),
+   Level 	INT UNSIGNED not null,
+   PRIMARY KEY (Id)
+);
+INSERT INTO TEST(Id,Kanji,Hira,Level) VALUES(	1	,"	嗚呼	","	ああ	",1);

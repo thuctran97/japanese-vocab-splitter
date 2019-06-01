@@ -19,6 +19,14 @@ public class JVDict {
 	String spell;
 	@Column(name="Meaning")
 	String meaning;
+	@Column(name="Level")
+	int level;
+	public int getLevel() {
+		return level;
+	}
+	public void setLevel(int level) {
+		this.level = level;
+	}
 	public int getId() {
 		return id;
 	}

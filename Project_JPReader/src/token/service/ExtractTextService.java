@@ -1,6 +1,11 @@
 package token.service;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Scanner;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -9,8 +14,8 @@ import org.jsoup.select.Elements;
 import org.junit.Test;
 
 public class ExtractTextService {
-	public static java.lang.String extractMeaning(java.lang.String word){
-		String url = "http://2.vndic.net/"+word+"-jp_vi.html";
+	public static String extractMeaning(String word) {
+		String url = "http://2.vndic.net/" + word + "-jp_vi.html";
 		StringBuffer meaning = new StringBuffer();
 		try {
 			Document document = Jsoup.connect(url).get();
@@ -18,7 +23,8 @@ public class ExtractTextService {
 			int count = 0;
 			for (Element element : link) {
 				count++;
-				if (count<4 || element.text().equals("")) continue;
+				if (count < 4 || element.text().equals(""))
+					continue;
 				if (element.text().contains(":")) {
 					meaning.append(". ").append(element.text()).append("\n");
 				} else {
@@ -31,9 +37,9 @@ public class ExtractTextService {
 		return meaning.toString();
 	}
 
-	@Test
+//	@Test
 	public void test() {
-		java.lang.String result = extractMeaning("ＴＰＰ交渉");
+		String result = extractMeaning("ＴＰＰ交渉");
 		System.out.println(result);
 	}
 
@@ -66,5 +72,54 @@ public class ExtractTextService {
 		if (text.equals(" ") || text.equals(""))
 			return false;
 		return true;
+	}
+
+	@Test
+	public void getLv() throws Exception{
+		URL u;
+		Scanner s;
+		u = new URL("https://jisho.org/search/%E3%81%99%E3%82%8B");
+		s = new Scanner(u.openStream());
+		int id=0;
+		while (s.hasNext()) {
+			String t = s.nextLine();
+			System.out.println(id+" "+t);
+			if (t.contains("Wanikani level 40")) break;
+			id++;
+		}
+		s.close();
+	}
+
+	public static int getLevel(String baseForm) {
+		String urlLink = "https://jisho.org/search/" + baseForm;
+		// try {
+		// Document document = Jsoup.connect(url).get();
+		// Elements link = document.getElementsByClass("concept_light-tag label");
+		// for (Element element : link) {
+		// System.out.println(element.text());
+		// }
+		// } catch (Exception e) {
+		// e.printStackTrace();
+		// }
+		try {
+			URL url = new URL(urlLink);
+
+			// read text returned by server
+			BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
+
+			String line;
+			while ((line = in.readLine()) != null) {
+				if (line.contains("Wanikani level")) {
+					System.out.println(line);
+					break;
+				}
+			}
+			in.close();
+		} catch (MalformedURLException e) {
+			System.out.println("Malformed URL: " + e.getMessage());
+		} catch (IOException e) {
+			System.out.println("I/O Error: " + e.getMessage());
+		}
+		return 1;
 	}
 }
