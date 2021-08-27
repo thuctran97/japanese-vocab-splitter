@@ -1,2 +1,2 @@
 # japanese-vocab-splitter
-Japanese vocabulary splitter
+Japanese vocabulary-learning application
